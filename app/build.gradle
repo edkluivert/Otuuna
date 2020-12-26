@@ -1,0 +1,127 @@
+import dependencies.AndroidTestDependencies
+import dependencies.Dependencies
+import dependencies.Application
+import dependencies.SupportDependencies
+import dependencies.Versions
+import dependencies.AnnotationProcessing
+import dependencies.TestDependencies
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId Application.id
+        minSdkVersion Versions.minsdk
+        targetSdkVersion Versions.targetsdk
+        versionCode Application.version_code
+        versionName Application.version_name
+
+        testInstrumentationRunner AndroidTestDependencies.androidTesting
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation Dependencies.ktx
+    implementation SupportDependencies.appcompat
+    implementation SupportDependencies.swipe_refresh_layout
+    implementation SupportDependencies.constraintlayout
+    implementation SupportDependencies.material_design
+
+
+
+    implementation Dependencies.cardView
+    implementation Dependencies.recyclerView
+    implementation Dependencies.googleMaterial
+    implementation Dependencies.fragmentKtx
+    implementation Dependencies.navigationUiKtx
+    implementation Dependencies.intuitsdp
+    implementation Dependencies.intuitssp
+    implementation Dependencies.navigation_fragment
+    implementation Dependencies.navigation_dynamic
+    implementation Dependencies.navigation_runtime
+    implementation Dependencies.markdown_processor
+    implementation Dependencies.room_runtime
+
+
+     implementation 'com.google.firebase:firebase-auth-ktx:20.0.1'
+     implementation 'com.google.firebase:firebase-firestore-ktx:22.0.1'
+     implementation 'com.google.firebase:firebase-storage-ktx:19.2.1'
+     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+     implementation 'com.github.armcha:ElasticView:0.2.0'
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
+
+    implementation  Dependencies.lifecyleViewModel
+
+    //LifeCycle LiveData
+    implementation Dependencies.lifecycleLiveData
+
+
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation Dependencies.lifecycleRuntime
+    implementation Dependencies.lifecycleCommon
+
+    implementation Dependencies.kotlinJdk
+    implementation Dependencies.kotlin_coroutines_core
+    implementation Dependencies.kotlin_coroutines_android
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+
+    testImplementation TestDependencies.mockk
+    testImplementation TestDependencies.jupiter_api
+    testImplementation TestDependencies.jupiter_params
+    testImplementation TestDependencies.junit4
+    testRuntimeOnly TestDependencies.jupiter_engine
+
+    androidTestImplementation AndroidTestDependencies.kotlin_test
+    androidTestImplementation AndroidTestDependencies.coroutines_test
+    androidTestImplementation AndroidTestDependencies.espresso_core
+    androidTestImplementation AndroidTestDependencies.espresso_contrib
+    androidTestImplementation AndroidTestDependencies.idling_resource
+    androidTestImplementation AndroidTestDependencies.mockk_android
+    androidTestImplementation AndroidTestDependencies.test_runner
+    androidTestImplementation AndroidTestDependencies.test_rules
+    androidTestImplementation AndroidTestDependencies.text_core_ktx
+    androidTestImplementation AndroidTestDependencies.navigation_testing
+    debugImplementation AndroidTestDependencies.fragment_testing
+
+}

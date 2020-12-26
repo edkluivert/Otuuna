@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red_light">#F07470</color>
+    <color name="red">#EA4C46</color>
+    <color name="red_dark">#DC1C13</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="grad1">#ff9a9e</color>
+    <color name="grad2">#fad0c4</color>
+
+    <color name="green">#6BD764</color>
+    <color name="light_green">#B9D7AC</color>
+
+    <color name="yellow">#FFC107</color>
+    <color name="light_yellow">#FFEB3B</color>
+</resources>
