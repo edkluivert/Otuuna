@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.auth.SignUp">
+    tools:context=".Appfragments.LoginFrag">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_280sdp"
+        android:layout_height="@dimen/_230sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/auth_backgroundsignup"
+        android:background="@drawable/auth_background"
         >
 
 
@@ -28,6 +34,7 @@
             android:layout_centerHorizontal="true"
             >
             <ImageView
+                android:contentDescription="@string/app_name"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/otuunalogo"
@@ -47,14 +54,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/raleway"
-        android:text="Quickly Sign Up"
+        android:text="Quickly Sign In"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         android:textColor="#373535"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_40sdp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_290sdp"
+        android:layout_marginTop="@dimen/_240sdp"
         />
 
 
@@ -62,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter email"
-        android:layout_marginBottom="@dimen/_230sdp"
+        android:layout_marginBottom="@dimen/_300sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +78,7 @@
         >
 
         <EditText
-            android:id="@+id/edemailsign"
+            android:id="@+id/edemail"
             android:layout_width="@dimen/_280sdp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/red"
@@ -89,7 +96,7 @@
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         android:hint="Enter password"
-        android:layout_marginBottom="@dimen/_160sdp"
+        android:layout_marginBottom="@dimen/_230sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +105,7 @@
         >
 
         <EditText
-            android:id="@+id/edpasswordsign"
+            android:id="@+id/edpassword"
             android:layout_width="@dimen/_280sdp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/red"
@@ -108,24 +115,61 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnSignUp"
-            android:layout_width="@dimen/_280sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginBottom="@dimen/_80sdp"
-            android:background="@color/red"
-            android:text="SIGN UP"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/white"
+    <ProgressBar
+        android:id="@+id/loginProgbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/_170sdp"
+        />
 
 
-            />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/red"
+        android:text="LOG IN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_110sdp"
+        android:textColor="@color/white"
+
+        />
 
 
 
+    <TextView
+        android:id="@+id/tvForgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_70sdp"
+        android:textColor="@color/red"
+        android:fontFamily="@font/raleway"
+        android:text="Forgot password?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:textColor="@color/red"
+        android:fontFamily="@font/raleway_bold"
+        android:text="No account? Sign Up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -10,6 +10,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.databinding.ActivityAuthBinding
@@ -27,7 +28,7 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding
 
     private lateinit var firebaseAuth: FirebaseAuth
-    lateinit var authViewModel: AuthViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,28 +36,29 @@ class AuthActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-       // firebaseAuth = FirebaseAuth.getInstance()
-      //  authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
-
-
-        binding.loginButton.setOnClickListener {
-            Intent(this,Login::class.java).also {
-                startActivity(it)
-            }
-        }
-
-        binding.signUpButton.setOnClickListener {
-            Intent(this,SignUp::class.java).also {
-                startActivity(it)
-            }
-
-        }
-
+        val navController = findNavController(R.id.authFragment)
+        firebaseAuth  = FirebaseAuth.getInstance()
         transparentStatusBar()
+         checkUser()
 
     }
 
+
+    fun checkUser(){
+        if(firebaseAuth.currentUser != null){
+            goHome()
+        }
+    }
+
+    fun goHome(){
+        Intent(this,MainActivity::class.java).also {
+            it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(it)
+            overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left);
+        }
+    }
 
     fun Activity.transparentStatusBar() {
 

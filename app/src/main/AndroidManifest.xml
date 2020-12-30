@@ -3,24 +3,37 @@
     package="com.kluivert.otuuna">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme_SplashScreen">
-        <activity android:name=".ui.auth.Login"/>
-        <activity android:name=".ui.auth.SignUp" />
-        <activity android:name=".ui.auth.AuthActivity"/>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.auth.ProfileEdit"
+            android:screenOrientation="portrait"
+            />
+       
+        <activity android:name=".ui.auth.AuthActivity"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.MainActivity"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+
 
         <meta-data
             android:name="preloaded_fonts"

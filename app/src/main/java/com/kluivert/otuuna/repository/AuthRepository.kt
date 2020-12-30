@@ -1,65 +1,58 @@
 package com.kluivert.otuuna.repository
 
 import android.app.Application
-import androidx.lifecycle.MutableLiveData
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.kluivert.otuuna.data.UserModel
+import com.kluivert.otuuna.utils.CustomDialog
+import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 
 class AuthRepository(application: Application) {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var application: Application
+//    private val user = auth.currentUser
+    private val personRef = Firebase.firestore.collection("Users")
 
-    private var userLiveData: MutableLiveData<FirebaseUser>? = null
-    private var loggedOutLiveData: MutableLiveData<Boolean>? = null
+
 
 
     init {
         this.application = application
         this.auth = FirebaseAuth.getInstance()
-        this.userLiveData = MutableLiveData()
-        this.loggedOutLiveData = MutableLiveData()
-
-        if (auth.getCurrentUser() != null) {
-            userLiveData!!.postValue(auth.getCurrentUser())
-            loggedOutLiveData!!.postValue(false)
-        }
-
     }
 
 
+    fun saveDetails(userModel : UserModel){
 
-    fun registerUser(email: String, password: String){
 
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                auth.createUserWithEmailAndPassword(email, password).await()
+            CoroutineScope(Dispatchers.IO).launch {
+                CustomDialog(application.applicationContext).show()
+                try {
+                    personRef.add(userModel).await()
+                    withContext(Dispatchers.Main){
+                        CustomDialog(application.applicationContext).dismiss()
+                        Toasty.success(application.applicationContext,"Success",Toast.LENGTH_SHORT).show()
+                    }
+                }catch (e : Exception){
+                    withContext(Dispatchers.Main){
+                        CustomDialog(application.applicationContext).dismiss()
+                        Toasty.success(application.applicationContext,e.message.toString(),Toast.LENGTH_SHORT).show()
+                    }
 
-            }catch (e: Exception){
+
+                }
 
             }
-        }
-
     }
-
-    fun loginUser(email: String, password: String){
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-               auth.signInWithEmailAndPassword(email,password).await()
-             //  userLiveData!!.postValue(auth.currentUser)
-            }catch(e:Exception){
-
-            }
-        }
-
-    }
-
-
 
 
 

@@ -4,84 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:background="@color/white"
     tools:context=".ui.auth.AuthActivity">
 
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_view_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_30sdp"
-        >
-        <ImageView
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
-            android:src="@drawable/otuunalogo"
-
-
-            />
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_100sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_170sdp"
-        android:fontFamily="@font/raleway_bold"
-        android:textColor="@color/white"
-        android:text="Memories Kept."
-        android:textStyle="bold"
-        android:textSize="@dimen/_30ssp"
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/auth_nav"
         />
-
-    <TextView
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="@dimen/_50sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_220sdp"
-        android:fontFamily="@font/raleway_thin"
-        android:textColor="@color/white"
-        android:text="@string/otuunawriteone"
-        android:textSize="@dimen/_12ssp"
-        />
-
-
-    <Button
-        android:id="@+id/signUpButton"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:background="@drawable/auth_button1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_70sdp"
-        android:text="Sign Up"
-        android:textColor="@color/white"
-        />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:background="@drawable/auth_button2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_70sdp"
-        android:text="Login"
-
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -32,4 +32,9 @@ object Dependencies {
     const val fireStorage = "com.google.firebase:firebase-storage-ktx${Versions.fireStorage}"
     const val fireStore = "com.google.firebase:firebase-firestore-ktx${Versions.firebaseFirestore}"
 
+    //Datastore
+
+    const val datastorePrefs = "androidx.datastore:datastore-preferences:${Versions.datastore}"
+
+
 }

@@ -18,8 +18,6 @@ object Versions {
     const val compilesdk = 29
     const val minsdk = 21
     const val coil = "1.1.0"
-    const val protoDataStore = "1.0.0-alpha01"
-    const val dataStoreJavaLite  = "3.10.0"
     const val firebaseAuth = "20.0.1"
     const val firebaseFirestore = "22.0.1"
     const val fireStorage = "19.2.1"
@@ -39,5 +37,7 @@ object Versions {
     const val junit_jupiter_version = "5.6.0"
     const val junit_4_version = "4.12"
     const val androidx_test_ext = "1.1.1"
+
+    const val datastore = "1.0.0-alpha01"
 
 }

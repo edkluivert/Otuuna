@@ -86,13 +86,17 @@ dependencies {
      implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
      implementation 'com.facebook.shimmer:shimmer:0.5.0'
      implementation 'com.github.armcha:ElasticView:0.2.0'
-    implementation 'com.github.GrenderG:Toasty:1.5.0'
+     implementation 'com.github.GrenderG:Toasty:1.5.0'
+     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
 
     implementation  Dependencies.lifecyleViewModel
 
     //LifeCycle LiveData
     implementation Dependencies.lifecycleLiveData
 
+
+    implementation Dependencies.datastorePrefs
 
     // Lifecycles only (without ViewModel or LiveData)
     implementation Dependencies.lifecycleRuntime
