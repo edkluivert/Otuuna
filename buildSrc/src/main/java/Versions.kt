@@ -25,6 +25,7 @@ object Versions {
     const val hiltViewModels = "1.0.0-alpha01"
     const val play_services = "4.3.3"
     const val ktx = "1.2.0"
+
     const val swipe_refresh_layout = "1.1.0-alpha03"
     const val appcompat = "1.1.0-rc01"
     const val constraintlayout = "1.1.3"

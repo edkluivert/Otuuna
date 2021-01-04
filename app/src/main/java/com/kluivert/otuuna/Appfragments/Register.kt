@@ -78,10 +78,6 @@ class Register : Fragment() {
 
         binding.profileImage.setOnClickListener {
 
-            Intent(Intent.ACTION_GET_CONTENT).also {
-                it.type = "image/*"
-                startActivityForResult(it, IMAGE_REQUEST_CODE)
-            }
             requestPermission()
         }
 
@@ -199,7 +195,11 @@ class Register : Fragment() {
 
         if (!hasReadExternalStorage()){
             permissionToRequest.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-
+        }else{
+            Intent(Intent.ACTION_GET_CONTENT).also {
+                it.type = "image/*"
+                startActivityForResult(it, IMAGE_REQUEST_CODE)
+            }
         }
 
         if(!hasWriteExternalStorage()){

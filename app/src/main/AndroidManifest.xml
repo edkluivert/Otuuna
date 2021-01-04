@@ -18,7 +18,7 @@
         <activity android:name=".ui.auth.ProfileEdit"
             android:screenOrientation="portrait"
             />
-       
+
         <activity android:name=".ui.auth.AuthActivity"
             android:screenOrientation="portrait"
             >

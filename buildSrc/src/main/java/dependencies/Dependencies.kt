@@ -25,7 +25,7 @@ object Dependencies {
     val navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation_ui_ktx_versions}"
     val navigation_runtime = "androidx.navigation:navigation-runtime:${Versions.navigation_ui_ktx_versions}"
     val room_runtime = "androidx.room:room-runtime:${Versions.room_version}"
-
+    val coil = "io.coil-kt:coil:${Versions.coil}"
 
     //Firebase
     const val firebaseAuth = "com.google.firebase:firebase-auth-ktx${Versions.firebaseAuth}"

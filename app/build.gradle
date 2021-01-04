@@ -4,7 +4,7 @@ import dependencies.Application
 import dependencies.SupportDependencies
 import dependencies.Versions
 import dependencies.AnnotationProcessing
-import dependencies.TestDependencies
+import dependencies.*
 
 plugins {
     id 'com.android.application'
@@ -108,7 +108,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-
+    implementation Dependencies.coil
 
     testImplementation TestDependencies.mockk
     testImplementation TestDependencies.jupiter_api
