@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -51,6 +52,10 @@ class Dashboard : Fragment() {
         retrieveData()
         binding.shimmerFrameLayout.stopShimmer()
 
+        binding.btnEdit.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_profileEdit)
+        }
+
     }
 
     private fun retrieveData() {
@@ -66,8 +71,6 @@ class Dashboard : Fragment() {
 
                 binding.shimmerFrameLayout.stopShimmer()
             }
-
-
 
         }
 

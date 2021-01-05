@@ -9,7 +9,12 @@
         android:id="@+id/home"
         android:name="com.kluivert.otuuna.ui.mainFrags.Dashboard"
         android:label="Home"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_home_to_profileEdit"
+            app:destination="@id/profileEdit" />
+
+    </fragment>
     <fragment
         android:id="@+id/profile"
         android:name="com.kluivert.otuuna.ui.mainFrags.Profile"
@@ -25,4 +30,11 @@
         android:name="com.kluivert.otuuna.ui.mainFrags.Cart"
         android:label="Cart"
         tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/profileEdit"
+        android:name="com.kluivert.otuuna.Appfragments.ProfileEdit"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit">
+
+    </fragment>
 </navigation>

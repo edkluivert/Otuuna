@@ -9,17 +9,6 @@
     tools:context=".ui.mainFrags.Dashboard">
 
 
-    <ScrollView android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:fillViewport="true">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-             >
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -164,7 +153,5 @@
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
