@@ -26,6 +26,8 @@
         android:layout_height="wrap_content"
         app:itemRippleColor="@color/red_light"
         app:itemBackground="@color/red"
+        app:itemIconTint="@color/bottom_nav_item_selector"
+        app:itemTextColor="@color/bottom_nav_item_selector"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

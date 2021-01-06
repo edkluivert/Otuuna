@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="@dimen/_150sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardElevation="@dimen/_10sdp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_user"
+            app:civ_border="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="@color/yellow"
+            app:civ_shadow_radius="@dimen/_4sdp" />
+
+        <ProgressBar
+            android:indeterminateTint="@color/red"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/profileImage"
+            android:textColor="@color/red"
+            android:text="Android guy"
+            android:textSize="@dimen/_16ssp"
+            android:fontFamily="@font/raleway"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/profileImage"
+            android:textColor="@color/dark_green"
+            android:text="Verified"
+            android:fontFamily="@font/raleway_thin"
+            android:textSize="@dimen/_12ssp"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_60sdp"
+            />
+
+
+
+    </androidx.cardview.widget.CardView>
+

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/_10sdp"
-    android:background="@color/white"
+    android:background="@color/red_lyta"
     tools:context=".ui.mainFrags.Dashboard">
 
 
@@ -33,6 +33,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:src="@drawable/ic_search"
+                    app:tint="@color/red_light"
                     android:layout_alignParentEnd="true"
                      />
 
@@ -50,78 +51,84 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:orientation="vertical">
 
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_150sdp"
-                    app:cardCornerRadius="@dimen/_10sdp"
-                    app:cardElevation="@dimen/_10sdp"
-                    >
-
-
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/profileImage"
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_gravity="start"
-                        android:src="@drawable/ic_user"
-                        app:civ_border="true"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="4dp"
-                        app:civ_shadow="true"
-                        app:civ_shadow_color="@color/yellow"
-                        app:civ_shadow_radius="@dimen/_4sdp" />
-
-
-                    <TextView
-                        android:id="@+id/tvName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@id/profileImage"
-                        android:textColor="@color/red"
-                        android:text="Android guy"
-                        android:textSize="@dimen/_16ssp"
-                        android:fontFamily="@font/raleway"
-                        android:layout_gravity="start"
-                        android:layout_marginStart="@dimen/_100sdp"
-                        android:layout_marginTop="@dimen/_30sdp"
-                        />
-
-                    <TextView
-                        android:id="@+id/tvStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@id/profileImage"
-                        android:textColor="@color/dark_green"
-                        android:text="Verified"
-                        android:fontFamily="@font/raleway_thin"
-                        android:textSize="@dimen/_12ssp"
-                        android:layout_gravity="start"
-                        android:layout_marginStart="@dimen/_100sdp"
-                        android:layout_marginTop="@dimen/_60sdp"
-                        />
-
-
-                    <Button
-                        android:id="@+id/btnEdit"
-                        android:layout_width="@dimen/_90sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:background="@drawable/edit_button"
-                        android:layout_gravity="end"
-                        android:textColor="@color/blue"
-                        android:text="Edit"
-                        android:fontFamily="@font/raleway"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="@dimen/_110sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        />
+                <include layout="@layout/shimmer_dashboard"/>
 
 
 
-                </androidx.cardview.widget.CardView>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainCard"
+        android:visibility="gone"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_130sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/profileImage"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_user"
+            app:civ_border="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="@color/red_light"
+            app:civ_shadow_radius="@dimen/_4sdp" />
+
+        <ProgressBar
+            android:indeterminateTint="@color/red"
+            android:id="@+id/profileProgbar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/profileImage"
+            android:textColor="@color/red"
+            android:text="Android guy"
+            android:textSize="@dimen/_16ssp"
+            android:fontFamily="@font/raleway"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/profileImage"
+            android:textColor="@color/dark_green"
+            android:text="Verified"
+            android:fontFamily="@font/raleway"
+            android:textSize="@dimen/_12ssp"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_60sdp"
+            />
+
+
+
+    </androidx.cardview.widget.CardView>
+
 
 
 
@@ -130,16 +137,17 @@
                     android:layout_height="wrap_content"
                     android:text="Saved Events"
                     android:textAllCaps="false"
-                    android:fontFamily="@font/raleway"
+                    android:fontFamily="@font/raleway_bold"
                     android:textColor="@color/red"
                     android:textSize="@dimen/_14ssp"
-                    android:layout_gravity="start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_170sdp"
+                    android:layout_marginTop="@dimen/_220sdp"
                     />
 
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+
 
 
             <androidx.recyclerview.widget.RecyclerView

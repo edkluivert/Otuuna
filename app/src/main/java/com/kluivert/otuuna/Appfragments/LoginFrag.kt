@@ -55,6 +55,9 @@ class Login : Fragment() {
             findNavController().navigate(R.id.action_login_to_register)
         }
 
+        binding.tvForgot.setOnClickListener {
+            resetPassword()
+        }
 
     }
 
@@ -92,7 +95,27 @@ class Login : Fragment() {
         AppUtils.animateEnterRight(requireActivity())
         activity?.finish()
         }
+
+
+    private fun resetPassword(){
+        val email = binding.edemail.text.toString()
+        if (email.isEmpty()){
+            Toasty.warning(requireContext(),"Enter email",Toast.LENGTH_SHORT,true).show()
+        }else{
+            auth.sendPasswordResetEmail(email).addOnCompleteListener {
+                if (it.isSuccessful){
+                    Toasty.success(requireContext(),"Reset password link has been sent",Toast.LENGTH_SHORT,true).show()
+                }else{
+                    Toasty.error(requireContext(),it.exception.toString(),Toast.LENGTH_SHORT,true).show()
+                }
+            }
+        }
+
     }
+
+    }
+
+
 
 
 
