@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +24,9 @@ import com.kluivert.otuuna.Appfragments.Register
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.data.UserModel
 import com.kluivert.otuuna.databinding.FragmentDashboardBinding
+import com.kluivert.otuuna.ui.EventsActivity
+import com.kluivert.otuuna.ui.MainActivity
+import com.kluivert.otuuna.utils.AppUtils
 import es.dmoral.toasty.Toasty
 
 
@@ -29,6 +34,10 @@ class Dashboard : Fragment() {
 
 
     companion object{
+            @JvmStatic
+            fun newInstance() = Dashboard()
+
+
         const val IMAGE_REQUEST_CODE = 0
     }
 
@@ -61,6 +70,11 @@ class Dashboard : Fragment() {
         auth = FirebaseAuth.getInstance()
         personRef = FirebaseFirestore.getInstance()
 
+       binding.eventsSearch.setOnClickListener {
+           startActivity(Intent(requireActivity(), EventsActivity::class.java))
+           AppUtils.animateEnterRight(requireActivity())
+           activity?.finish()
+       }
 
 
 
@@ -158,5 +172,6 @@ class Dashboard : Fragment() {
             }
         }
     }
+
 
 }

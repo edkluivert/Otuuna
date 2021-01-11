@@ -10,35 +10,27 @@
 
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/search_background"
-                >
+    <RelativeLayout
+        android:id="@+id/events_search"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/dashboard_header"
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:backgroundTint="@color/white"
-                    android:hint="Search for events"
-                    android:fontFamily="@font/raleway"
-                    android:inputType="text"
+        >
 
-                    />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Search for events"
+           android:textColor="@color/white"
+           android:fontFamily="@font/raleway"
+           android:textSize="@dimen/_14ssp"
+           android:layout_centerInParent="true"
+           />
 
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:src="@drawable/ic_search"
-                    app:tint="@color/red_light"
-                    android:layout_alignParentEnd="true"
-                     />
-
-
-            </RelativeLayout>
+    </RelativeLayout>
 
 
             <com.facebook.shimmer.ShimmerFrameLayout

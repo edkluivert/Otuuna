@@ -30,6 +30,7 @@ android {
 
     buildFeatures {
         viewBinding true
+
     }
 
     buildTypes {
@@ -83,12 +84,22 @@ dependencies {
      implementation 'com.google.firebase:firebase-auth-ktx:20.0.1'
      implementation 'com.google.firebase:firebase-firestore-ktx:22.0.1'
      implementation 'com.google.firebase:firebase-storage-ktx:19.2.1'
+     implementation 'com.google.firebase:firebase-core:18.0.0'
+     implementation 'com.firebaseui:firebase-ui-firestore:6.3.0'
      implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
      implementation 'com.facebook.shimmer:shimmer:0.5.0'
      implementation 'com.github.armcha:ElasticView:0.2.0'
      implementation 'com.github.GrenderG:Toasty:1.5.0'
      implementation 'com.mikhaellopez:circularimageview:4.2.0'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+
+    def viewpager2_version = "1.0.0"
+    implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
+    def paging_version = "3.0.0-alpha06"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+
+
 
     implementation  Dependencies.lifecyleViewModel
 
