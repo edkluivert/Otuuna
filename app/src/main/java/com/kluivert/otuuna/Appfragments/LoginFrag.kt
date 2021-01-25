@@ -45,7 +45,7 @@ class Login : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        binding.shimmerViewContainer.startShimmer()
+        binding.shimmerViewContainer.startShimmerAnimation()
 
         binding.btnLogin.setOnClickListener {
             loginUser()

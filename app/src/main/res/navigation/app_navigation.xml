@@ -11,13 +11,13 @@
         android:label="Home"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
-        android:id="@+id/profile"
-        android:name="com.kluivert.otuuna.ui.mainFrags.Profile"
-        android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
         android:id="@+id/history"
         android:name="com.kluivert.otuuna.ui.mainFrags.History"
         android:label="History"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.kluivert.otuuna.ui.mainFrags.CartFrag"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>

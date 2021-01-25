@@ -13,15 +13,24 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.paging.PagedList
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.kluivert.kwota.util.OtuunaListener
 import com.kluivert.otuuna.Appfragments.Register
 import com.kluivert.otuuna.R
+import com.kluivert.otuuna.adapters.events.EventsAdapter
+import com.kluivert.otuuna.adapters.savedevents.SavedEventsAdapter
+import com.kluivert.otuuna.data.OtuunaEvents
 import com.kluivert.otuuna.data.UserModel
 import com.kluivert.otuuna.databinding.FragmentDashboardBinding
 import com.kluivert.otuuna.ui.EventsActivity
@@ -30,14 +39,10 @@ import com.kluivert.otuuna.utils.AppUtils
 import es.dmoral.toasty.Toasty
 
 
-class Dashboard : Fragment() {
+class Dashboard : Fragment() ,EventsInterface, OtuunaListener{
 
 
     companion object{
-            @JvmStatic
-            fun newInstance() = Dashboard()
-
-
         const val IMAGE_REQUEST_CODE = 0
     }
 
@@ -47,6 +52,25 @@ class Dashboard : Fragment() {
     private val binding get() = _binding!!
     private  var personRef = Firebase.firestore
     private lateinit var auth: FirebaseAuth
+
+
+    private val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setPrefetchDistance(2)
+            .setPageSize(5)
+            .build()
+
+    private val database = FirebaseFirestore.getInstance()
+    private val mQuery = database.collection("Events")
+
+    // Init adapter options
+    private val options = FirestorePagingOptions.Builder<OtuunaEvents>()
+            .setLifecycleOwner(this)
+            .setQuery(mQuery, config, OtuunaEvents::class.java)
+            .build()
+
+
+    private var evenAdapter = SavedEventsAdapter(options, this,this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +94,24 @@ class Dashboard : Fragment() {
         auth = FirebaseAuth.getInstance()
         personRef = FirebaseFirestore.getInstance()
 
-       binding.eventsSearch.setOnClickListener {
+
+
+
+        binding.dashrecyevents.apply {
+          //  val layoutManager = LinearLayoutManager(requireContext())
+       //     layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+         //   binding.dashrecyevents.itemAnimator = DefaultItemAnimator()
+            adapter = evenAdapter
+        }
+
+
+        binding.dashsrlayoutMain.setOnRefreshListener {
+            evenAdapter.refresh()
+        }
+
+
+
+        binding.eventsSearch.setOnClickListener {
            startActivity(Intent(requireActivity(), EventsActivity::class.java))
            AppUtils.animateEnterRight(requireActivity())
            activity?.finish()
@@ -99,7 +140,7 @@ class Dashboard : Fragment() {
             val user = documentSnapshot.toObject<UserModel>()
 
             if (documentSnapshot.exists()){
-                binding.shimmerFrameLayout.stopShimmer()
+                binding.shimmerFrameLayout.stopShimmerAnimation()
                 binding.shimmerFrameLayout.visibility = View.GONE
                 binding.mainCard.visibility = View.VISIBLE
                 binding.tvName.text = user!!.firstName +" "+ user.lastName
@@ -171,6 +212,30 @@ class Dashboard : Fragment() {
 
             }
         }
+    }
+
+    override suspend fun savelistener(otuunaEvents: OtuunaEvents, position: Int) {
+
+    }
+
+    override suspend fun viewListener(otuunaEvents: OtuunaEvents, position: Int) {
+
+    }
+
+    override fun refreshLayout() {
+        binding.dashsrlayoutMain.isRefreshing = true
+    }
+
+    override fun stopRefreshingLayout() {
+      binding.dashsrlayoutMain.isRefreshing = false
+    }
+
+    override fun shimmerStart() {
+        TODO("Not yet implemented")
+    }
+
+    override fun shimmerStop() {
+        TODO("Not yet implemented")
     }
 
 

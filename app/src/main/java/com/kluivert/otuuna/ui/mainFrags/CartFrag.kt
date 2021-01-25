@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.kluivert.otuuna.R
 
-class Cart : Fragment() {
+
+class CartFrag : Fragment() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

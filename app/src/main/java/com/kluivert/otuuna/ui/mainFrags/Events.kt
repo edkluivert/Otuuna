@@ -5,39 +5,53 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
+import android.widget.Toast
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.kluivert.otuuna.adapters.EventsAdapter
+import com.kluivert.kwota.util.OtuunaListener
+import com.kluivert.otuuna.adapters.events.EventsAdapter
 
 import com.kluivert.otuuna.data.OtuunaEvents
 import com.kluivert.otuuna.databinding.FragmentEventsBinding
-import com.kluivert.otuuna.utils.DividerItemDecoration
-import com.kluivert.otuuna.viewModels.EventsViewModel
+import es.dmoral.toasty.Toasty
 
 
-class Events : Fragment() {
-
-
-    private lateinit var eventsAdapter: EventsAdapter
-
+class Events : Fragment(), EventsInterface, OtuunaListener {
 
 
     private var _binding : FragmentEventsBinding? = null
     private val binding get() = _binding!!
 
-    //private  var personRef = Firebase.firestore
+    private  var personRef = Firebase.firestore
     private lateinit var auth: FirebaseAuth
+
+
+    private val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setPrefetchDistance(2)
+            .setPageSize(10)
+            .build()
+
+    private val database = FirebaseFirestore.getInstance()
+    private val mQuery = database.collection("Events")
+
+    // Init adapter options
+    private val options = FirestorePagingOptions.Builder<OtuunaEvents>()
+            .setLifecycleOwner(this)
+            .setQuery(mQuery, config, OtuunaEvents::class.java)
+            .build()
+
+
+    private var evenAdapter = EventsAdapter(options, this,this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
     }
 
@@ -52,59 +66,112 @@ class Events : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
+        personRef = FirebaseFirestore.getInstance()
+
+        mQuery.get().addOnSuccessListener {
+            val lastVisible = it.documents[it.size() - 1]
+            val next = database.collection("Events")
+                    .orderBy("eventTitle")
+                    .startAfter(lastVisible)
+                    .limit(25)
+        }
+
+        binding.recyevents.apply {
+            adapter = evenAdapter
+           // addOnScrollListener(this@Events.scrollListener)
+        }
+        binding.srlayoutMain.setOnRefreshListener { evenAdapter.refresh() }
 
 
-   binding.shimmerFrameLayout.startShimmer()
+
+    }
+
+    private fun addEvents(){
 
 
-         val query = FirebaseFirestore.getInstance()
-             .collection("Events")
-             //.whereEqualTo("eventTitle","Home")
-            .orderBy("eventTitle")
-        val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(true)
-            .setPrefetchDistance(5)
-            .setPageSize(10) // No of items loaded from datasource
-            .build()
-        val options = FirestorePagingOptions.Builder<OtuunaEvents>()
-            .setQuery(query, config, OtuunaEvents::class.java)
-            .build()
+
+    }
 
 
-         eventsAdapter = EventsAdapter (options)
 
-        binding.recyevents.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyevents.addItemDecoration(
-                DividerItemDecoration(
-                        requireContext(),
-                        LinearLayoutManager.VERTICAL
-                )
+   /* var isScrolling = false
+    var isLoading = false
+    var isLastPage = false
 
-        )
-        binding.shimmerFrameLayout.stopShimmer()
+    val scrollListener = object : RecyclerView.OnScrollListener(){
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val layoutManager = binding.recyevents.layoutManager as LinearLayoutManager
+            val firstVisibleItemPosition  = layoutManager.findFirstVisibleItemPosition()
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+
+
+            val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
+            val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
+            val isNotAtBeginning = firstVisibleItemPosition >= 0
+            val isTotalMoreThanVisible = totalItemCount >=  QUERY_PAGE_SIZE
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning && isTotalMoreThanVisible
+                    && isScrolling
+            if (shouldPaginate){
+                mQuery.get().addOnSuccessListener {
+                    val lastVisible = it.documents[it.size() - 1]
+                    val next = database.collection("Events")
+                            .orderBy("eventTitle")
+                            .startAfter(lastVisible)
+                            .limit(25)
+                }
+                isScrolling = false
+            }else{
+                //binding.recyevents.setPadding(0,0,0,0)
+            }
+
+
+        }
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+
+            if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                isScrolling = true
+            }
+        }
+    }*/
+
+
+
+
+
+    override fun shimmerStart() {
+       binding.shimmerFrameLayout.startShimmerAnimation()
+    }
+
+    override fun shimmerStop() {
+        binding.shimmerFrameLayout.stopShimmerAnimation()
         binding.shimmerFrameLayout.visibility = View.GONE
-
-
-        binding.recyevents.adapter = eventsAdapter
-         binding.recyevents.visibility = View.VISIBLE
+        binding.srlayoutMain.visibility = View.VISIBLE
 
     }
 
 
-
-   override fun onStart() {
-        super.onStart()
-       eventsAdapter.startListening()
+    override fun refreshLayout() {
+           binding.srlayoutMain.isRefreshing = true
     }
 
-    override fun onStop() {
-        super.onStop()
-        eventsAdapter.stopListening()
+    override fun stopRefreshingLayout() {
+            binding.srlayoutMain.isRefreshing = false
     }
 
+    override suspend fun savelistener(otuunaEvents: OtuunaEvents, position: Int) {
+        personRef.collection("Users").document(auth.currentUser!!.uid).collection("Events").document(otuunaEvents.eventTitle.toString()).set(otuunaEvents)
+                .addOnSuccessListener {
+                    Toasty.success(requireContext(),"Added", Toast.LENGTH_SHORT,true).show()
+                }
+    }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = Events()
+    override suspend fun viewListener(otuunaEvents: OtuunaEvents, position: Int) {
+
     }
 }

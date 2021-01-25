@@ -22,11 +22,11 @@
         app:queryBackground="@null" />
 
 
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerFrameLayout"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_30sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,38 +40,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
+            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/events_item_layout" />
 
-            <include layout="@layout/events_item_layout" />
-
-            <include layout="@layout/events_item_layout" />
-
-            <include layout="@layout/events_item_layout" />
-
-            <include layout="@layout/events_item_layout" />
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:visibility="gone"
+        android:id="@+id/srlayout_main"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
 
     <androidx.recyclerview.widget.RecyclerView
 
@@ -79,7 +81,6 @@
         android:padding="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_30sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         tools:listitem="@layout/events_item_layout"
@@ -87,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 
