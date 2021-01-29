@@ -15,11 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Otuuna">
-        <activity android:name=".ui.EventsActivity"
+        <activity android:name=".ui.activities.EventsActivity"
             android:screenOrientation="portrait"
             ></activity>
         <activity
-            android:name=".ui.auth.Splash"
+            android:name=".ui.activities.Splash"
             android:theme="@style/Theme_SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.auth.AuthActivity"
+            android:name=".ui.activities.AuthActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing"></activity>
 

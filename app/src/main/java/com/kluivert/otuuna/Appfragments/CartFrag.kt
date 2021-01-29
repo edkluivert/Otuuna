@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui.mainFrags
+package com.kluivert.otuuna.Appfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.kluivert.otuuna.R
 
 
-class History : Fragment() {
-
+class CartFrag : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +21,7 @@ class History : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
 

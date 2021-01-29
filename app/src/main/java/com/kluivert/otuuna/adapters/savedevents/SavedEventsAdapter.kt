@@ -8,8 +8,7 @@ import com.firebase.ui.firestore.paging.LoadingState
 import com.kluivert.kwota.util.OtuunaListener
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.data.OtuunaEvents
-import com.kluivert.otuuna.ui.mainFrags.Dashboard
-import com.kluivert.otuuna.ui.mainFrags.Events
+import com.kluivert.otuuna.Appfragments.Dashboard
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui.mainFrags
+package com.kluivert.otuuna.Appfragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -10,13 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -26,20 +20,17 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.kluivert.kwota.util.OtuunaListener
-import com.kluivert.otuuna.Appfragments.Register
-import com.kluivert.otuuna.R
-import com.kluivert.otuuna.adapters.events.EventsAdapter
 import com.kluivert.otuuna.adapters.savedevents.SavedEventsAdapter
 import com.kluivert.otuuna.data.OtuunaEvents
 import com.kluivert.otuuna.data.UserModel
 import com.kluivert.otuuna.databinding.FragmentDashboardBinding
-import com.kluivert.otuuna.ui.EventsActivity
-import com.kluivert.otuuna.ui.MainActivity
+import com.kluivert.otuuna.ui.activities.EventsActivity
+import com.kluivert.otuuna.utils.EventsInterface
 import com.kluivert.otuuna.utils.AppUtils
 import es.dmoral.toasty.Toasty
 
 
-class Dashboard : Fragment() ,EventsInterface, OtuunaListener{
+class Dashboard : Fragment() , EventsInterface, OtuunaListener{
 
 
     companion object{

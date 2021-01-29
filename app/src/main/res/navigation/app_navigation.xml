@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.kluivert.otuuna.ui.mainFrags.Dashboard"
+        android:name="com.kluivert.otuuna.Appfragments.Dashboard"
         android:label="Home"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/history"
-        android:name="com.kluivert.otuuna.ui.mainFrags.History"
+        android:name="com.kluivert.otuuna.Appfragments.History"
         android:label="History"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/cart"
-        android:name="com.kluivert.otuuna.ui.mainFrags.CartFrag"
+        android:name="com.kluivert.otuuna.Appfragments.CartFrag"
         android:label="Cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>

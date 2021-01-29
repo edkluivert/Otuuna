@@ -1,12 +1,10 @@
-package com.kluivert.otuuna.ui.auth
+package com.kluivert.otuuna.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.google.firebase.auth.FirebaseAuth
-import com.kluivert.otuuna.ui.MainActivity
 
 class Splash : AppCompatActivity() {
 
@@ -19,7 +17,7 @@ class Splash : AppCompatActivity() {
 
     private val runnable = Runnable{
         if(!isFinishing){
-            startActivity(Intent(applicationContext,AuthActivity::class.java))
+            startActivity(Intent(applicationContext, AuthActivity::class.java))
             finish()
         }
     }

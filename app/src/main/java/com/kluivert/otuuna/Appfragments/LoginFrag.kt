@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.databinding.FragmentLoginBinding
-import com.kluivert.otuuna.ui.MainActivity
+import com.kluivert.otuuna.ui.activities.MainActivity
 import com.kluivert.otuuna.utils.AppUtils
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
@@ -62,8 +62,8 @@ class Login : Fragment() {
     }
 
     private fun loginUser(){
-        var email : String = binding.edemail.text.toString()
-        var password : String = binding.edpassword.text.toString()
+        val email : String = binding.edemail.text.toString()
+        val password : String = binding.edpassword.text.toString()
 
         if(password.length <= 5) {
             Toasty.warning(requireContext(),"Incorrect password", Toast.LENGTH_SHORT,true).show()
@@ -91,7 +91,7 @@ class Login : Fragment() {
     }
 
     fun goHome(){
-        startActivity(Intent(requireActivity(),MainActivity::class.java))
+        startActivity(Intent(requireActivity(), MainActivity::class.java))
         AppUtils.animateEnterRight(requireActivity())
         activity?.finish()
         }

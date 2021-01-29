@@ -1,24 +1,17 @@
-package com.kluivert.otuuna.ui
+package com.kluivert.otuuna.ui.activities
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.databinding.ActivityMainBinding
-import com.kluivert.otuuna.ui.auth.AuthActivity
 import com.kluivert.otuuna.viewModels.AuthViewModel
-import es.dmoral.toasty.Toasty
 
 
 class MainActivity : AppCompatActivity() {
@@ -58,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goHome(){
-        Intent(this,AuthActivity::class.java).also {
+        Intent(this, AuthActivity::class.java).also {
             it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(it)
             overridePendingTransition(R.anim.slide_in_right,

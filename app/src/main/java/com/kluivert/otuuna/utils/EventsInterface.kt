@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui.mainFrags
+package com.kluivert.otuuna.utils
 
 interface EventsInterface {
     fun refreshLayout()

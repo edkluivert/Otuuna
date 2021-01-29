@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui.mainFrags
+package com.kluivert.otuuna.Appfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui.auth
+package com.kluivert.otuuna.ui.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -7,20 +7,10 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.databinding.ActivityAuthBinding
-import com.kluivert.otuuna.databinding.ActivityMainBinding
-import com.kluivert.otuuna.ui.MainActivity
-import com.kluivert.otuuna.viewModels.AuthViewModel
-import es.dmoral.toasty.Toasty
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
 
@@ -52,7 +42,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun goHome(){
-        Intent(this,MainActivity::class.java).also {
+        Intent(this, MainActivity::class.java).also {
             it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(it)
             overridePendingTransition(R.anim.slide_in_right,

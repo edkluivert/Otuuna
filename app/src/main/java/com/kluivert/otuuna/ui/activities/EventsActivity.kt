@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui
+package com.kluivert.otuuna.ui.activities
 
 import android.content.Intent
 import android.os.Build

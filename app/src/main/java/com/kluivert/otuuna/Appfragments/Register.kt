@@ -1,7 +1,6 @@
 package com.kluivert.otuuna.Appfragments
 
 import android.Manifest
-import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,27 +14,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.kluivert.otuuna.R
 import com.kluivert.otuuna.data.UserModel
 import com.kluivert.otuuna.databinding.FragmentRegisterBinding
-import com.kluivert.otuuna.ui.MainActivity
+import com.kluivert.otuuna.ui.activities.MainActivity
 import com.kluivert.otuuna.utils.AppUtils
-import com.theartofdev.edmodo.cropper.CropImage
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import java.security.Permission
 
 
 class Register : Fragment() {

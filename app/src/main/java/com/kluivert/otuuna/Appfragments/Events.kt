@@ -1,4 +1,4 @@
-package com.kluivert.otuuna.ui.mainFrags
+package com.kluivert.otuuna.Appfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +17,7 @@ import com.kluivert.otuuna.adapters.events.EventsAdapter
 
 import com.kluivert.otuuna.data.OtuunaEvents
 import com.kluivert.otuuna.databinding.FragmentEventsBinding
+import com.kluivert.otuuna.utils.EventsInterface
 import es.dmoral.toasty.Toasty
 
 
