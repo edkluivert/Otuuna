@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.paging.PagedList
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -89,9 +91,10 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
 
 
         binding.dashrecyevents.apply {
-          //  val layoutManager = LinearLayoutManager(requireContext())
-       //     layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-         //   binding.dashrecyevents.itemAnimator = DefaultItemAnimator()
+          layoutManager = LinearLayoutManager(requireContext()).apply {
+              orientation = LinearLayoutManager.HORIZONTAL
+          }
+            //binding.dashrecyevents.itemAnimator = DefaultItemAnimator()
             adapter = evenAdapter
         }
 
