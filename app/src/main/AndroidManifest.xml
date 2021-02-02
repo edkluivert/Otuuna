@@ -17,6 +17,8 @@
         android:theme="@style/Theme.Otuuna">
         <activity android:name=".ui.activities.EventsActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Otuuna.ActionBar"
+            android:label="Events"
             ></activity>
         <activity
             android:name=".ui.activities.Splash"
@@ -35,6 +37,7 @@
             android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing"></activity>
+
 
         <meta-data
             android:name="preloaded_fonts"

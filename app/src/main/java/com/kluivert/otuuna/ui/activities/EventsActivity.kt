@@ -5,14 +5,20 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.kluivert.otuuna.R
-import com.kluivert.otuuna.utils.AppUtils
+
 
 class EventsActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events)
 
+        setupActionBarWithNavController(findNavController(R.id.eventsFragment))
 
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
@@ -24,12 +30,12 @@ class EventsActivity : AppCompatActivity() {
         }
 
     }
-
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, MainActivity::class.java))
-        AppUtils.animateEnterLeft(this)
-        finish()
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.eventsFragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+
+
+
 }

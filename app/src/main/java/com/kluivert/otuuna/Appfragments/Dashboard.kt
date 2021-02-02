@@ -5,13 +5,13 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
@@ -27,8 +27,8 @@ import com.kluivert.otuuna.data.OtuunaEvents
 import com.kluivert.otuuna.data.UserModel
 import com.kluivert.otuuna.databinding.FragmentDashboardBinding
 import com.kluivert.otuuna.ui.activities.EventsActivity
-import com.kluivert.otuuna.utils.EventsInterface
 import com.kluivert.otuuna.utils.AppUtils
+import com.kluivert.otuuna.utils.EventsInterface
 import es.dmoral.toasty.Toasty
 
 
@@ -47,23 +47,6 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
     private lateinit var auth: FirebaseAuth
 
 
-    private val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(false)
-            .setPrefetchDistance(2)
-            .setPageSize(5)
-            .build()
-
-    private val database = FirebaseFirestore.getInstance()
-    private val mQuery = database.collection("Events")
-
-    // Init adapter options
-    private val options = FirestorePagingOptions.Builder<OtuunaEvents>()
-            .setLifecycleOwner(this)
-            .setQuery(mQuery, config, OtuunaEvents::class.java)
-            .build()
-
-
-    private var evenAdapter = SavedEventsAdapter(options, this,this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,12 +71,33 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
         personRef = FirebaseFirestore.getInstance()
 
 
+        val id = auth.currentUser
 
+       val config = PagedList.Config.Builder()
+                .setEnablePlaceholders(false)
+                .setPrefetchDistance(2)
+                .setPageSize(5)
+                .build()
+
+       val database = FirebaseFirestore.getInstance()
+        val mQuery = database.collection("Users").document(id!!.uid).collection("Events")
+
+        // Init adapter options
+        val options = FirestorePagingOptions.Builder<OtuunaEvents>()
+                .setLifecycleOwner(this)
+                .setQuery(mQuery, config, OtuunaEvents::class.java)
+                .build()
+
+
+         var evenAdapter = SavedEventsAdapter(options, this, this)
 
         binding.dashrecyevents.apply {
           layoutManager = LinearLayoutManager(requireContext()).apply {
               orientation = LinearLayoutManager.HORIZONTAL
+              reverseLayout = false
           }
+          //addItemDecoration(DividerItemDecoration(requireContext(),LinearLayoutManager.HORIZONTAL))
+
             //binding.dashrecyevents.itemAnimator = DefaultItemAnimator()
             adapter = evenAdapter
         }
@@ -188,14 +192,19 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
 
                 val userRef = personRef.collection("Users").document(id.uid)
                 userRef
-                        .update("profilePhoto",link)
+                        .update("profilePhoto", link)
                         .addOnSuccessListener {
-                            Toasty.success(requireContext(),"Success", Toast.LENGTH_SHORT,true).show()
+                            Toasty.success(requireContext(), "Success", Toast.LENGTH_SHORT, true).show()
                             displayProfileProgBar(false)
 
                         }
                         .addOnFailureListener {
-                            Toasty.error(requireContext(),it.message.toString(), Toast.LENGTH_SHORT,true).show()
+                            Toasty.error(
+                                requireContext(),
+                                it.message.toString(),
+                                Toast.LENGTH_SHORT,
+                                true
+                            ).show()
                             displayProfileProgBar(false)
                         }
 
@@ -212,7 +221,7 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
 
     }
 
-    override suspend fun viewListener(otuunaEvents: OtuunaEvents, position: Int) {
+    override  fun viewListener(otuunaEvents: OtuunaEvents, position: Int) {
 
     }
 

@@ -11,6 +11,7 @@
         android:id="@+id/events_search"
         android:layout_width="@dimen/_280sdp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
         app:defaultQueryHint="Search for events"
         app:searchHintIcon="@drawable/ic_search"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_60sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -69,25 +70,25 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:visibility="gone"
         android:id="@+id/srlayout_main"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_60sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
 
-    <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
 
-        android:id="@+id/recyevents"
-        android:padding="@dimen/_5sdp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
-        tools:listitem="@layout/events_item_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+            android:id="@+id/recyevents"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/events_item_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 

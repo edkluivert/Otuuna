@@ -29,19 +29,24 @@ class EventsAdapter(options: FirestorePagingOptions<OtuunaEvents>, private val e
             }
         }
 
+        viewHolder.binding.eventCard.setOnClickListener {
+                     listener.viewListener(otuunaEvents,position)
+        }
+
     }
 
     override fun onLoadingStateChanged(state: LoadingState) {
         when (state) {
             LoadingState.LOADING_INITIAL -> {
-              events.shimmerStart()
+             events.shimmerStart()
             }
             LoadingState.LOADED ->{
-                events.shimmerStop()
+               events.shimmerStop()
                 events.refreshLayout()
             }
             LoadingState.FINISHED,
-            LoadingState.ERROR -> events.stopRefreshingLayout()
+            LoadingState.ERROR ->
+                events.stopRefreshingLayout()
         }
     }
 

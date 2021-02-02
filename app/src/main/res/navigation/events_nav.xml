@@ -9,5 +9,20 @@
         android:id="@+id/events"
         android:name="com.kluivert.otuuna.Appfragments.Events"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_events_to_eventInfo"
+            app:destination="@id/eventInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventInfo"
+        android:name="com.kluivert.otuuna.Appfragments.EventInfo"
+        android:label="EventInfo" >
+        <action
+            android:id="@+id/action_eventInfo_to_events"
+            app:destination="@id/events" />
+        <argument
+            android:name="eventID"
+            app:argType="string" />
+    </fragment>
 </navigation>

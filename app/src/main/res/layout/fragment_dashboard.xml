@@ -154,7 +154,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/dashrecyevents"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
                 tools:listitem="@layout/saved_events_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
