@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/register" />
+        <action
+            android:id="@+id/action_login_to_photoSignUp"
+            app:destination="@id/photoSignUp" />
     </fragment>
     <fragment
         android:id="@+id/register"
@@ -22,4 +25,9 @@
             android:id="@+id/action_register_to_login"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/photoSignUp"
+        android:name="com.kluivert.otuuna.Appfragments.PhotoSignUp"
+        android:label="fragment_photo_sign_up"
+        tools:layout="@layout/fragment_photo_sign_up" />
 </navigation>

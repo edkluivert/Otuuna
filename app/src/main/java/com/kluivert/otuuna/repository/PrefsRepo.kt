@@ -14,7 +14,7 @@ const val PREFERENCE_NAME = true
 class PrefsRepo(context: Context) {
 
    private object preferencesKey{
-      val name = preferencesKey<Boolean>(true.toString())
+      val name = preferencesKey<String>(true.toString())
    }
 
 
@@ -22,22 +22,22 @@ class PrefsRepo(context: Context) {
        name = PREFERENCE_NAME.toString()
    )
 
-  suspend fun saveToDataStore(name : Boolean){
+  suspend fun saveToDataStore(name : String){
       datastore.edit { preference->
          preference[preferencesKey.name] = name
       }
    }
 
-   val readFromDataStore : Flow<Boolean> = datastore.data.catch { exception->
-      if (exception is IOException){
-         emit(emptyPreferences())
-      }else{
-         throw exception
-      }
+   val readFromDataStore : Flow<String> = datastore.data.catch { exception->
+       if (exception is IOException){
+           emit(emptyPreferences())
+       }else{
+           throw exception
+       }
 
    }.map {preference->
-      val myAuth = preference[preferencesKey.name] ?: false
-      myAuth
+       val myType = preference[preferencesKey.name] ?: "none"
+       myType
    }
 
 

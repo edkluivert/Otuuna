@@ -39,10 +39,10 @@
 
     <style name="Theme_SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:statusBarColor">@color/red</item>
+        <item name="android:statusBarColor">@color/transwhite</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/red</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>

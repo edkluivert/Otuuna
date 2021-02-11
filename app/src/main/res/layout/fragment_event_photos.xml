@@ -4,27 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Appfragments.Events">
-
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/image_search"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_25sdp"
-        app:defaultQueryHint="Look for your photos"
-        app:searchHintIcon="@drawable/ic_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/search_background"
-        android:textCursorDrawable="@null"
-        app:iconifiedByDefault="false"
-        app:queryBackground="@null" />
-
+    tools:context=".Appfragments.EventPhotos">
 
 
     <com.facebook.shimmer.ShimmerFrameLayout
+        android:visibility="gone"
         android:id="@+id/shimmerFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,56 +25,90 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/shimmer_placeholder_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+            <include layout="@layout/shimmer_image_item_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
+            <include layout="@layout/shimmer_image_item_layout" />
 
-            <include layout="@layout/shimmer_placeholder_layout" />
-
-            <include layout="@layout/shimmer_placeholder_layout" />
-
-            <include layout="@layout/shimmer_placeholder_layout" />
-
-            <include layout="@layout/shimmer_placeholder_layout" />
-
-            <include layout="@layout/shimmer_placeholder_layout" />
-
-            <include layout="@layout/shimmer_placeholder_layout" />
 
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <include layout="@layout/shimmer_image_item_layout" />
+
+            <include layout="@layout/shimmer_image_item_layout" />
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal">
+
+                <include layout="@layout/shimmer_image_item_layout" />
+
+                <include layout="@layout/shimmer_image_item_layout" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
     </com.facebook.shimmer.ShimmerFrameLayout>
 
 
+    <TextView
+        android:id="@+id/tvPhotoAvail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_16ssp"
+        android:gravity="center_horizontal"
+        android:text="No photos"
+        android:fontFamily="@font/raleway"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:visibility="gone"
-        android:id="@+id/srlayout_main"
+        android:id="@+id/srlayout_photos"
         android:layout_marginTop="@dimen/_60sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
 
+
         <androidx.recyclerview.widget.RecyclerView
 
-            android:id="@+id/recyevents"
+            android:id="@+id/recyphotos"
             android:padding="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
-            tools:listitem="@layout/events_item_layout"
+            tools:listitem="@layout/image_item_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

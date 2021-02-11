@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/otuunalogo"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:src="@drawable/favicon"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/otunnaillustration"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="@dimen/_230sdp"
+        android:src="@drawable/otuunacamera"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/otuunalogo"
+        />
+
+    <TextView
+        android:id="@+id/otuunatext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spot an Otuuna photographer"
+        android:fontFamily="@font/raleway_bold"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otunnaillustration"
+        />
+
+    <TextView
+        android:id="@+id/otunnatext2"
+        android:layout_width="@dimen/_240sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:text="Otuuna have professional photographers who are available at any events."
+        android:fontFamily="@font/raleway"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otuunatext1"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

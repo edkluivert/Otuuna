@@ -17,7 +17,7 @@ class Splash : AppCompatActivity() {
 
     private val runnable = Runnable{
         if(!isFinishing){
-            startActivity(Intent(applicationContext, AuthActivity::class.java))
+            startActivity(Intent(applicationContext, OnBoarding::class.java))
             finish()
         }
     }

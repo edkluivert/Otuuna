@@ -45,7 +45,6 @@ class Login : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        binding.shimmerViewContainer.startShimmerAnimation()
 
         binding.btnLogin.setOnClickListener {
             loginUser()
@@ -58,6 +57,8 @@ class Login : Fragment() {
         binding.tvForgot.setOnClickListener {
             resetPassword()
         }
+
+
 
     }
 

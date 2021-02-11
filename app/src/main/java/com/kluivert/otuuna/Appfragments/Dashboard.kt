@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,9 +97,6 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
               orientation = LinearLayoutManager.HORIZONTAL
               reverseLayout = false
           }
-          //addItemDecoration(DividerItemDecoration(requireContext(),LinearLayoutManager.HORIZONTAL))
-
-            //binding.dashrecyevents.itemAnimator = DefaultItemAnimator()
             adapter = evenAdapter
         }
 
@@ -116,113 +114,16 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
        }
 
 
-
-        retrieveData()
-
-
-
-        binding.profileImage.setOnClickListener {
-            Intent(Intent.ACTION_GET_CONTENT).also {
-                it.type = "image/*"
-                startActivityForResult(it, IMAGE_REQUEST_CODE)
-            }
-        }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun retrieveData() {
-
-        val id = auth.currentUser
-        val docRef = personRef.collection("Users").document(id!!.uid)
-        docRef.get().addOnSuccessListener { documentSnapshot ->
-            val user = documentSnapshot.toObject<UserModel>()
-
-            if (documentSnapshot.exists()){
-                binding.shimmerFrameLayout.stopShimmerAnimation()
-                binding.shimmerFrameLayout.visibility = View.GONE
-                binding.mainCard.visibility = View.VISIBLE
-                binding.tvName.text = user!!.firstName +" "+ user.lastName
-                binding.profileImage.load(user.profilePhoto)
-            }else{
-                binding.shimmerFrameLayout.visibility = View.VISIBLE
-                binding.mainCard.visibility = View.GONE
-            }
-
-        }
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK && requestCode == Register.IMAGE_REQUEST_CODE){
-            data?.data?.let {
-                curFile = it
-                binding.profileImage.setImageURI(it)
-                displayProfileProgBar(true)
-                updatePhoto()
-
-            }
-        }
-
-    }
-
-    private fun displayProfileProgBar(isDisplayed: Boolean) {
-        binding.profileProgbar.visibility = if (isDisplayed) View.VISIBLE else View.GONE
-    }
-
-    fun updatePhoto(){
-
-        val id = auth.currentUser
-
-        val ref = Firebase.storage.reference.child("Images/").child(id!!.uid)
-        val uploadTask = ref.putFile(curFile!!)
-        uploadTask.continueWithTask { task ->
-            if (!task.isSuccessful) {
-                throw task.exception!!
-            }
-
-
-            // Continue with the task to getBitmap the download URL
-            ref.downloadUrl
-        }.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-
-                val link : String =  task.result.toString()
-
-                val userRef = personRef.collection("Users").document(id.uid)
-                userRef
-                        .update("profilePhoto", link)
-                        .addOnSuccessListener {
-                            Toasty.success(requireContext(), "Success", Toast.LENGTH_SHORT, true).show()
-                            displayProfileProgBar(false)
-
-                        }
-                        .addOnFailureListener {
-                            Toasty.error(
-                                requireContext(),
-                                it.message.toString(),
-                                Toast.LENGTH_SHORT,
-                                true
-                            ).show()
-                            displayProfileProgBar(false)
-                        }
-
-                displayProfileProgBar(false)
-
-            } else {
-
-
-            }
-        }
-    }
 
     override suspend fun savelistener(otuunaEvents: OtuunaEvents, position: Int) {
 
     }
 
     override  fun viewListener(otuunaEvents: OtuunaEvents, position: Int) {
-
+              val action = DashboardDirections.actionHomeToEventPhotos(otuunaEvents.eventID.toString())
+               findNavController().navigate(action)
     }
 
     override fun refreshLayout() {

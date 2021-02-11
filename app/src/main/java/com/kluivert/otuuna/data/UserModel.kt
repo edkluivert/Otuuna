@@ -5,9 +5,9 @@ package com.kluivert.otuuna.data
 
 data class UserModel(
 
-        val firstName : String? = null,
-        val lastName : String? = null,
-        var profilePhoto : String? = null
+        val fullName : String? = null,
+        val phone : String? = null,
+
 
 
 )
