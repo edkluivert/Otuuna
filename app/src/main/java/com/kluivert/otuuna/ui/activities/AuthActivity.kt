@@ -29,7 +29,7 @@ class AuthActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.authFragment)
         firebaseAuth  = FirebaseAuth.getInstance()
-        transparentStatusBar()
+        //transparentStatusBar()
          checkUser()
 
     }

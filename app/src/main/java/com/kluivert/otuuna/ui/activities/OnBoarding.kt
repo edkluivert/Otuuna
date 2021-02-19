@@ -11,6 +11,7 @@ import com.kluivert.otuuna.R
 import com.kluivert.otuuna.adapters.onboarding.OnBoardingAdapter
 import com.kluivert.otuuna.data.Slides
 import com.kluivert.otuuna.databinding.ActivityOnBoardingBinding
+import com.kluivert.otuuna.utils.AppUtils
 
 class OnBoarding : AppCompatActivity() {
 
@@ -40,12 +41,25 @@ class OnBoarding : AppCompatActivity() {
 
            }.attach()
 
+
+        binding.signBtn.setOnClickListener {
+            goReg()
+        }
+
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
 
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+
+
+    }
+
+    fun goReg(){
+        Intent(this@OnBoarding, AuthActivity::class.java).also {
+            startActivity(it)
         }
 
     }

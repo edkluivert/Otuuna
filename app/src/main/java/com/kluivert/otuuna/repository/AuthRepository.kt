@@ -6,7 +6,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.kluivert.otuuna.data.UserModel
-import com.kluivert.otuuna.utils.CustomDialog
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +33,7 @@ class AuthRepository(application: Application) {
     fun saveDetails(userModel : UserModel){
 
 
-            CoroutineScope(Dispatchers.IO).launch {
+           /* CoroutineScope(Dispatchers.IO).launch {
                 CustomDialog(application.applicationContext).show()
                 try {
                     personRef.add(userModel).await()
@@ -51,7 +50,7 @@ class AuthRepository(application: Application) {
 
                 }
 
-            }
+            }*/
     }
 
 

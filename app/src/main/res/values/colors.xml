@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red_light">#F07470</color>
-    <color name="red">#EA4C46</color>
-    <color name="red_dark">#DC1C13</color>
+    <color name="colorPrimary">#C90706</color>
+    <color name="colorPrimaryDark">#C90706</color>
+    <color name="colorAccent">#F96565</color>
+    <color name="darkcolor">#B31111</color>
+    <color name="drawableColor">#3b4450</color>
+    <color name="colorGrey">#EEEEEE</color>
+    <color name="shark">#202124</color>
+    <color name="shark_light">#3F3F40</color>
+
+    <color name="lytred">#F35B5B</color>
+
+<color name="dummy">#cdcdcd</color>
+    <color name="shuttle_grey">#BCDDF8</color>
+
+    <color name="white">#ffffff</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="dashcolor1">#e6702c</color>
+    <color name="black">#504949</color>
 
-     <color name="transwhite">#0AFFFFFF</color>
 
-    <color name="red_lyta">#F5FBEAEA</color>
 
-    <color name="grad1">#fa709a</color>
-    <color name="grad2">#fee140</color>
+    <color name="blacker">#000000</color>
+    <color name="lytgrey">#A29898</color>
+    <color name="anodablack">#676565</color>
 
-    <color name="green">#6BD764</color>
-    <color name="dark_green">#1F8718</color>
-    <color name="light_green">#B9D7AC</color>
 
-    <color name="yellow">#FFC107</color>
-    <color name="light_yellow">#FFEB3B</color>
 
-    <color name="blue">#2196F3</color>
 
-    <color name="colorGrey">#dddddd</color>
+
 </resources>

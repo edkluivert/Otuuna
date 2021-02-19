@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Create Account"
-            android:textColor="@color/black"
+            android:textColor="@color/blacker"
             android:fontFamily="@font/raleway_bold"
             android:textSize="@dimen/_22ssp"
 
@@ -55,6 +55,7 @@
             android:text="Create a free account and start
             uploading or purchasing photos."
             android:fontFamily="@font/raleway"
+            android:textColor="@color/lytgrey"
             android:textSize="@dimen/_16ssp"
 
             />
@@ -205,7 +206,7 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
          android:layout_marginTop="@dimen/_20sdp"
-        android:indeterminateTint="@color/red"
+        android:indeterminateTint="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/inputregpassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +217,7 @@
         android:id="@+id/btnRegister"
         android:layout_width="@dimen/_280sdp"
         android:layout_height="@dimen/_40sdp"
-        android:background="@drawable/auth_button3"
+        android:background="@drawable/auth_button"
         android:text="CREATE ACCOUNT"
         android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/regProgbar"
@@ -244,7 +245,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign in"
-            android:textColor="@color/red"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_14ssp"
             android:fontFamily="@font/raleway_bold"
             android:layout_marginEnd="@dimen/_70sdp"

@@ -23,6 +23,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.kluivert.kwota.util.OtuunaListener
+import com.kluivert.otuuna.R
 import com.kluivert.otuuna.adapters.savedevents.SavedEventsAdapter
 import com.kluivert.otuuna.data.OtuunaEvents
 import com.kluivert.otuuna.data.UserModel
@@ -92,26 +93,10 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
 
          var evenAdapter = SavedEventsAdapter(options, this, this)
 
-        binding.dashrecyevents.apply {
-          layoutManager = LinearLayoutManager(requireContext()).apply {
-              orientation = LinearLayoutManager.HORIZONTAL
-              reverseLayout = false
-          }
-            adapter = evenAdapter
+
+        binding.uploadcard.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_events)
         }
-
-
-        binding.dashsrlayoutMain.setOnRefreshListener {
-            evenAdapter.refresh()
-        }
-
-
-
-        binding.eventsSearch.setOnClickListener {
-           startActivity(Intent(requireActivity(), EventsActivity::class.java))
-           AppUtils.animateEnterRight(requireActivity())
-           activity?.finish()
-       }
 
 
     }
@@ -122,16 +107,15 @@ class Dashboard : Fragment() , EventsInterface, OtuunaListener{
     }
 
     override  fun viewListener(otuunaEvents: OtuunaEvents, position: Int) {
-              val action = DashboardDirections.actionHomeToEventPhotos(otuunaEvents.eventID.toString())
-               findNavController().navigate(action)
+
     }
 
     override fun refreshLayout() {
-        binding.dashsrlayoutMain.isRefreshing = true
+       // binding.dashsrlayoutMain.isRefreshing = true
     }
 
     override fun stopRefreshingLayout() {
-      binding.dashsrlayoutMain.isRefreshing = false
+     // binding.dashsrlayoutMain.isRefreshing = false
     }
 
     override fun shimmerStart() {

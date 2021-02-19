@@ -12,7 +12,7 @@ import com.kluivert.otuuna.databinding.FragmentEventPhotosBinding
 
 class EventPhotos : Fragment() {
 
-    val args : EventPhotosArgs by navArgs()
+   // val args : EventPhotosArgs by navArgs()
     private var _binding : FragmentEventPhotosBinding? = null
     private val binding get() = _binding!!
 

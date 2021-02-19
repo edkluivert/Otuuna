@@ -50,7 +50,7 @@ class Login : Fragment() {
             loginUser()
         }
 
-        binding.tvSignUp.setOnClickListener {
+        binding.tvSignUp1.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_register)
         }
 

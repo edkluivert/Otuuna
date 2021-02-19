@@ -31,7 +31,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/red"
+            android:background="@color/colorPrimary"
             android:layout_marginTop="@dimen/_70sdp"
             />
 
@@ -43,7 +43,7 @@
             android:layout_marginTop="@dimen/_80sdp"
             android:text="Home"
             android:textSize="@dimen/_14ssp"
-            android:textColor="@color/red"
+            android:textColor="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="@dimen/_5sdp"
 

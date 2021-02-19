@@ -5,7 +5,11 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -28,18 +32,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        checkUser()
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+       checkUser()
+       /* window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
 
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
+        }*/
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
-        val navController = findNavController(R.id.fragmentContainer)
-        bottomNav.setupWithNavController(navController)
+       binding.hamburger.setOnClickListener {
+           binding.drawerLayout.openDrawer(GravityCompat.START)
+       }
+
+        binding.navigationMenu.itemIconTintList = null
+        val navController : NavController = Navigation.findNavController(this,R.id.navHoster)
+        NavigationUI.setupWithNavController(binding.navigationMenu,navController)
+
+
+
+
+
     }
 
 

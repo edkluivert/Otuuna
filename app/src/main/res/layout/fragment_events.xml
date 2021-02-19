@@ -3,24 +3,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Appfragments.Events">
 
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/image_search"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_25sdp"
-        app:defaultQueryHint="Look for your photos"
-        app:searchHintIcon="@drawable/ic_search"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/firstLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_240sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/search_background"
-        android:textCursorDrawable="@null"
-        app:iconifiedByDefault="false"
-        app:queryBackground="@null" />
+        android:background="@color/colorAccent"
+        >
+
+
+        <ImageView
+            android:id="@+id/freventFav"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/favicon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/otunnalogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blacker"
+            app:layout_constraintTop_toBottomOf="@id/freventFav"
+            android:fontFamily="@font/raleway_bold"
+            android:text="OTUUNA"
+            android:textSize="@dimen/_30ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <EditText
+            android:id="@+id/edPrice"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/edittextlayoutevent"
+            app:layout_constraintTop_toBottomOf="@id/otunnalogo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:hint="Price 0.00"
+            android:textColorHint="@color/black"
+            android:layout_marginStart="@dimen/_10sdp"
+            />
+
+        <EditText
+            android:id="@+id/edNewEvent"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/edittextlayoutevent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            app:layout_constraintStart_toEndOf="@id/edPrice"
+            app:layout_constraintTop_toBottomOf="@id/otunnalogo"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_35sdp"
+            app:layout_constraintStart_toEndOf="@id/edNewEvent"
+            app:layout_constraintTop_toBottomOf="@id/otunnalogo"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/ic_camerawhite"
+            android:layout_marginStart="@dimen/_20sdp"
+            />
+
+
+
+        <Spinner
+            android:id="@+id/events_spinner"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_40sdp"
+            app:layout_constraintTop_toBottomOf="@id/edPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/edittextlayoutevent"
+            android:entries="@array/planets_array"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 
@@ -29,10 +104,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_260sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstLayout"
         android:orientation="vertical">
 
 
@@ -70,9 +145,13 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:visibility="gone"
         android:id="@+id/srlayout_main"
-        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_260sdp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstLayout"
+        >
 
 
 
@@ -85,11 +164,10 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             tools:listitem="@layout/events_item_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+
             />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 
 

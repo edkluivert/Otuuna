@@ -12,9 +12,6 @@
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/register" />
-        <action
-            android:id="@+id/action_login_to_photoSignUp"
-            app:destination="@id/photoSignUp" />
     </fragment>
     <fragment
         android:id="@+id/register"
@@ -24,10 +21,26 @@
         <action
             android:id="@+id/action_register_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_register_to_phoneVerify"
+            app:destination="@id/phoneVerify" />
     </fragment>
     <fragment
-        android:id="@+id/photoSignUp"
-        android:name="com.kluivert.otuuna.Appfragments.PhotoSignUp"
-        android:label="fragment_photo_sign_up"
-        tools:layout="@layout/fragment_photo_sign_up" />
+        android:id="@+id/otpFragment"
+        android:name="com.kluivert.otuuna.Appfragments.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneVerify"
+        android:name="com.kluivert.otuuna.Appfragments.PhoneVerify"
+        android:label="fragment_phone_verify"
+        tools:layout="@layout/fragment_phone_verify" >
+        <action
+            android:id="@+id/action_phoneVerify_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
 </navigation>

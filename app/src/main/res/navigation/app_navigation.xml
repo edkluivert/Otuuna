@@ -11,26 +11,22 @@
         android:label="Home"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/action_home_to_eventPhotos"
-            app:destination="@id/eventPhotos" />
+            android:id="@+id/action_home_to_events"
+            app:destination="@id/events" />
     </fragment>
     <fragment
-        android:id="@+id/history"
-        android:name="com.kluivert.otuuna.Appfragments.History"
-        android:label="History"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/about"
+        android:name="com.kluivert.otuuna.Appfragments.About"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
     <fragment
-        android:id="@+id/cart"
-        android:name="com.kluivert.otuuna.Appfragments.CartFrag"
-        android:label="Cart"
-        tools:layout="@layout/fragment_cart" />
+        android:id="@+id/faq"
+        android:name="com.kluivert.otuuna.Appfragments.FAQ"
+        android:label="FAQ"
+        tools:layout="@layout/fragment_f_a_q" />
     <fragment
-        android:id="@+id/eventPhotos"
-        android:name="com.kluivert.otuuna.Appfragments.EventPhotos"
-        android:label="fragment_event_photos"
-        tools:layout="@layout/fragment_event_photos" >
-        <argument
-            android:name="eventID"
-            app:argType="string" />
-    </fragment>
+        android:id="@+id/events"
+        android:name="com.kluivert.otuuna.Appfragments.Events"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" />
 </navigation>

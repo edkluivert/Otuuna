@@ -1,167 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/_10sdp"
-    android:background="@color/red_lyta"
+    android:background="@drawable/dashboardback"
     tools:context=".Appfragments.Dashboard">
 
 
 
-    <RelativeLayout
-        android:id="@+id/events_search"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="@dimen/_30sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/dashboard_header"
-
-        >
-
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Search for events"
-           android:textColor="@color/white"
-           android:fontFamily="@font/raleway"
-           android:textSize="@dimen/_14ssp"
-           android:layout_centerInParent="true"
-           />
-
-    </RelativeLayout>
-
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerFrameLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_60sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:orientation="vertical">
-
-                <include layout="@layout/shimmer_dashboard"/>
-
-
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/mainCard"
-        android:visibility="gone"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="@dimen/_130sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:cardElevation="@dimen/_4sdp"
-        android:layout_marginTop="@dimen/_60sdp"
+    <ImageView
+        android:id="@+id/imgHomeFav"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/favicon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/uploadcard"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_170sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgHomeFav"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="@dimen/_30sdp"
         >
 
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/profileImage"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_gravity="start"
-            android:src="@drawable/ic_user"
-            app:civ_border="true"
+        <ImageView
+            android:id="@+id/imgCamHome"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/ic_camera"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="4dp"
-            app:civ_shadow="true"
-            app:civ_shadow_color="@color/red_light"
-            app:civ_shadow_radius="@dimen/_4sdp" />
 
-        <ProgressBar
-            android:indeterminateTint="@color/red"
-            android:id="@+id/profileProgbar"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_30sdp"
-            />
-
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/profileImage"
-            android:textColor="@color/red"
-            android:text="Android guy"
-            android:textSize="@dimen/_16ssp"
-            android:fontFamily="@font/raleway"
-            android:layout_gravity="start"
-            android:layout_marginStart="@dimen/_100sdp"
-            android:layout_marginTop="@dimen/_30sdp"
             />
 
         <TextView
-            android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/profileImage"
-            android:textColor="@color/dark_green"
-            android:text="Verified"
-            android:fontFamily="@font/raleway"
-            android:textSize="@dimen/_12ssp"
-            android:layout_gravity="start"
-            android:layout_marginStart="@dimen/_100sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_gravity="center_horizontal"
+            android:text="Upload Photos to Otuuna"
+            android:textColor="@color/blacker"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/raleway_bold"
             />
 
+        <TextView
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="12"
+            android:text="Select the photos, set the price and upload them to the platform"
+            android:textColor="@color/blacker"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/raleway"
+            />
 
 
     </androidx.cardview.widget.CardView>
 
-
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Saved Events"
-                    android:textAllCaps="false"
-                    android:fontFamily="@font/raleway_bold"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_220sdp"
-                    />
-
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/dashsrlayout_main"
-        android:layout_marginTop="@dimen/_260sdp"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/findcard"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_170sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uploadcard"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="@dimen/_30sdp"
         >
 
+        <ImageView
+            android:id="@+id/imgCamHome1"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/ic_camera"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Find Your Photos"
+            android:textColor="@color/blacker"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/raleway_bold"
+            />
+
+        <TextView
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="14"
+            android:text="Select photos, using event type, location or event date and purchase them"
+            android:textColor="@color/blacker"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/raleway"
+            />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dashrecyevents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                tools:listitem="@layout/saved_events_layout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

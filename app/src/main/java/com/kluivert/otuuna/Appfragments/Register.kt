@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -132,11 +133,17 @@ class Register : Fragment() {
 
     }
 
+   /* fun goHome(){
+        findNavController().navigate(R.id.action_register_to_phoneVerify)
+    }*/
+
+
     fun goHome(){
         startActivity(Intent(requireActivity(), MainActivity::class.java))
         AppUtils.animateEnterRight(requireActivity())
         activity?.finish()
     }
+
 
 
 

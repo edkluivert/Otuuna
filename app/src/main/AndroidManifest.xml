@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Otuuna">
-        <activity android:name=".ui.activities.OnBoarding"></activity>
+
+        <activity android:name=".ui.activities.OnBoarding" />
         <activity android:name=".ui.activities.UploadActivity" />
         <activity
             android:name=".ui.activities.EventsActivity"
@@ -37,7 +38,9 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing" />
+            android:windowSoftInputMode="adjustNothing"
+
+            />
 
         <meta-data
             android:name="preloaded_fonts"
